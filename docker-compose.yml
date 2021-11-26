@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+
+  laravel:
+    build:
+      context: .
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+        NODE_VERSION: ${NODE_VERSION}
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./src:/app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
