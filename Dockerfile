@@ -1,7 +1,6 @@
-ARG PHP_VERSION=8.0.13
-ARG NODE_VERSION=16
+FROM php:8.0.13-fpm
 
-FROM php:${VERSION}
+ARG NODE_VERSION=16
 
 # Set working directory
 WORKDIR /app

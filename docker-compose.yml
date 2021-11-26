@@ -1,18 +1,17 @@
 version: "3.7"
 services:
 
-  laravel:
+  app:
     build:
       context: .
-      args:
-        PHP_VERSION: ${PHP_VERSION}
-        NODE_VERSION: ${NODE_VERSION}
     restart: unless-stopped
-    working_dir: /var/www/
     volumes:
       - ./src:/app
     networks:
       - app-network
+    ports:
+      - "${MAIN_PORT:-8000}:8000"
+      - "${SUB_PORT:-3000}:3000"
 
 networks:
   app-network:
