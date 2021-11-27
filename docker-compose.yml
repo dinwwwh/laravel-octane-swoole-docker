@@ -7,12 +7,5 @@ services:
     restart: unless-stopped
     volumes:
       - ./src:/app
-    networks:
-      - app-network
     ports:
-      - "${MAIN_PORT:-8000}:8000"
-      - "${SUB_PORT:-3000}:3000"
-
-networks:
-  app-network:
-    driver: bridge
+      - "${EXTERNAL_PORT:-80}:${INTERNAL_PORT:-80}"
