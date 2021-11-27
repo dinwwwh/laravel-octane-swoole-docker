@@ -33,3 +33,5 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Overide php config
 COPY php.ini /usr/local/etc/php/conf.d/local.ini
+
+ENTRYPOINT ["/bin/sh", "-c" , "composer install --no-dev -q && php artisan key:generate -q && php artisan octane:start --server=swoole --port=80 --host=0.0.0.0"]
